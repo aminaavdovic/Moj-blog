@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Moj Blog</h1>
+    <div style="border: 1px dashed gray; padding: 10px; margin: 10px 0; text-align: center;">
+        Ovdje će biti reklama (npr. Google AdSense kod)
+    </div>
+    {% if session.get("admin") %}
+        <p><a href="{{ url_for('add') }}">Dodaj post</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Admin Login</a></p>
+    {% endif %}
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
